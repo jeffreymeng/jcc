@@ -84,7 +84,7 @@
         firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     firebase.database().ref("/users/" + user.uid + "/history/").on('child_added', function(data) {
-        $("#history").prepend("<div><hr><h3>Transaction " + data.key + "</h3><p>Seller:" + data.val().seller + "<br>Amount:" + data.val().amount + "</p></div>")
+        $("#history").prepend("<div><hr><h3>Transaction " + data.key + "</h3><p>Seller:" + data.val().seller + "<br>Amount:" + data.val().amount + "<br>Time: " + data.val().date + "at" + data.val().time + "</p></div>")
 });
   } else {
     window.location.href = "/login?redirect=" + encodeURIComponent(window.location.href);
