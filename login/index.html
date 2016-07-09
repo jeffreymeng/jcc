@@ -92,7 +92,11 @@
             });
             firebase.auth().onAuthStateChanged(function(user) {
                 if (user) {
-                    window.location.href = decodeURIComponent(getQuery("redirect")) || "/";
+                    if (!getQuery("redirect")) {
+                        window.location.href = "/"
+                    } else {
+                    window.location.href = decodeURIComponent(getQuery("redirect"));
+                    }
                 }
             });
         });
