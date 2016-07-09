@@ -18,6 +18,7 @@
 
 <body>
     <div class="alert alert-success hidden" role="alert" id="logout">You were logged out successfully!</div>
+    <div class="alert alert-success hidden" role="alert" id="reneter">You must reenter your password to <span id="action"></span>!</div>
     <div class="form-box">
         <div class="head" id="title">Login</div>
         <div id="login-form">
@@ -78,6 +79,13 @@
         if (window.location.hash === "#logout") {
             firebase.auth().signOut().then(function() {
                 $("#logout").removeClass("hidden")
+            }, function(error) {
+                // An error happened.
+            });
+        } else if (window.location.hash === "#reenter") {
+            firebase.auth().signOut().then(function() {
+                $("#action").html(decodeURIComponent(getQuery("action")))
+                $("#reenter").removeClass("hidden");
             }, function(error) {
                 // An error happened.
             });
