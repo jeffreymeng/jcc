@@ -14,8 +14,8 @@
             <input class="form-control" id="em" type="email" placeholder="e.g. John_Smith@gmail.com">
             <input class="form-control btn btn-primary" type="button" type="submit" id="submit" value="Apply!">
         </form>
-        <p id="fa">You must fill out both fields</p>
-        <p id="as">Your application was sent. You should be sent a resonse in less than 3 days.</p>
+        <p id="fa" class="text-danger">You must fill out both fields</p>
+        <p id="as" class="text-success">Your application was sent. You should be sent a resonse in less than 3 days.</p>
     </div>
     <script src="/js/jquery.js"></script>
     <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase.js"></script>
@@ -47,6 +47,7 @@
                     email: $("#em").val()
                 });
                 localStorage.setItem("applied", "true");
+                $("#fa").hide();
                 $("#as").show();
                 $("#form").hide();
                 }
