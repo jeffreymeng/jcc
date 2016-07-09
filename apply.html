@@ -35,7 +35,7 @@
     $("#fa").hide();
     $("#as").hide();
         if (localStorage.getItem("applied") === "true") {
-            $("#body").html("<h1>You have already applied. If you have not recived a response in 3 days, please email Jeffrey.</h1>");
+            $("body").html("<h1>You have already applied. If you have not recived a response in 3 days, please email Jeffrey.</h1>");
         }
         else {
             $("#submit").click(function() {
