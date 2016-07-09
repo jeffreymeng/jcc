@@ -83,12 +83,9 @@
                 // An error happened.
             });
         } else if (window.location.hash === "#reenter") {
-            firebase.auth().signOut().then(function() {
                 $("#action").html(decodeURIComponent(getQuery("action")))
                 $("#reenter").removeClass("hidden");
-            }, function(error) {
-                // An error happened.
-            });
+
         }
         /* global $ firebase*/
         $("#login-btn").click(function() {
