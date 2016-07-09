@@ -1,0 +1,37 @@
+    <html><head>
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    </head><body>
+<div class="col-lg-12 container"><p>At this point, you are not able to completly apply online.<br>Please enter your full name and email address and you will be sent an application</p>
+<form id="form">
+    <p>Full Name:</p>
+    <input class="form-control" id="fn" type="text" placeholder="e.g. John Smith">
+    <p>Email Address:</p>
+    <input class="form-control" id="ea" type="email" placeholder="e.g. John_Smith@gmail.com">
+    <input class="form-control" type="button" type="submit" id="submit" value="Apply!">
+</form></div>  
+<script src="/js/jquery.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.1.0/firebase.js"></script>
+
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyBYBbhXXRaIPFtuURL_tLQZn9P2NvaLqHI",
+            authDomain: "jcredit.firebaseapp.com",
+            databaseURL: "https://jcredit.firebaseio.com",
+            storageBucket: "firebase-jcredit.appspot.com",
+        };
+        firebase.initializeApp(config);
+    </script>
+<script>
+if (localStorage.getItem("applied") === "true") {
+    $("#body").html("<h1>You have already applied. If you have not recived a response in 3 days, please email Jeffrey.</h1>");
+} else {
+$("#submit").click(function(){
+ firebase.database().ref("/applications/").push({
+        name:$("#fn").val(), email:$("#en").val()
+    });   
+    localStorage.setItem("applied", "true")
+});
+}
+</script>
+</body></html>
