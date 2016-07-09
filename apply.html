@@ -11,9 +11,11 @@
             <p>Full Name:</p>
             <input class="form-control" id="fn" type="text" placeholder="e.g. John Smith">
             <p>Email Address:</p>
-            <input class="form-control" id="ea" type="email" placeholder="e.g. John_Smith@gmail.com">
+            <input class="form-control" id="em" type="email" placeholder="e.g. John_Smith@gmail.com">
             <input class="form-control btn btn-primary" type="button" type="submit" id="submit" value="Apply!">
         </form>
+        <p id="fa">You must fill out both fields</p>
+        <p id="as">Your application was sent. You should be sent a resonse in less than 3 days.</p>
     </div>
     <script src="/js/jquery.js"></script>
     <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase.js"></script>
@@ -29,18 +31,25 @@
         firebase.initializeApp(config);
     </script>
     <script>
+    /* global $ firebase localStorage */
+    $("#fa").hide();
+    $("#as").hide();
         if (localStorage.getItem("applied") === "true") {
             $("#body").html("<h1>You have already applied. If you have not recived a response in 3 days, please email Jeffrey.</h1>");
         }
         else {
             $("#submit").click(function() {
+                if ($("#fn").val() === null || $("#fn").val().replace(" ", "") === "" || $("#em").val() === null || $("#em").val().replace(" ", "") === "" ) {
+                    $("#fa").show();
+                } else {
                 firebase.database().ref("/applications/").push({
                     name: $("#fn").val(),
-                    email: $("#en").val()
+                    email: $("#em").val()
                 });
                 localStorage.setItem("applied", "true");
-                alert("You should recieve a response in less than 3 days.");
-                window.location.href = "/";
+                $("#as").show();
+                $("#form").hide();
+                }
             });
         }
     </script>
