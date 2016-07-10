@@ -96,7 +96,12 @@
         $("#generate").click(function() {
 
             //firebase.database().ref('cards/' + code).set(value);
-            $("#cnumber").html($("#number").val() || x());
+            if ($("#number").val() === null || $("#number").val().replace(" ", "") === "") {
+                $("#cnumber").html(x());
+            } else {
+                $("#cnumber").html($("#number").val());
+            }
+            
             $("#cname").html($("#name").val());
             $("#ccvc").html($("#cvc").val());
             $("#main").addClass("hidden");
