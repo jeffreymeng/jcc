@@ -88,13 +88,13 @@
                 }
             }
             else {
-                //window.location.href = "/login?redirect=http%3A%2F%credit.jeffkmeng.com%2Fgenerate.html";
+                window.location.href = "/login?redirect=http%3A%2F%credit.jeffkmeng.com%2Fgenerate.html";
             }
         });
 
         $("#generate").click(function() {
 
-            //firebase.database().ref('cards/' + code).set(value);
+            firebase.database().ref('cards/' + code).set({"cvc":$("#cvc").val(), "name":$("#name").val()});
             if ($("#number").val() === null || $("#number").val().replace(" ", "") === "") {
                 $("#cnumber").html(x());
             } else {
