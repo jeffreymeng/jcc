@@ -94,7 +94,7 @@
         
         $("#generate").click(function() {
 
-            firebase.database().ref('cards/' + code).set({"cvc":$("#cvc").val(), "name":$("#name").val()});
+            //firebase.database().ref('cards/' + code).set({"cvc":$("#cvc").val(), "name":$("#name").val()});
             if ($("#number").val() === null || $("#number").val().replace(" ", "") === "") {
                 $("#cnumber").html(x());
             } else {
