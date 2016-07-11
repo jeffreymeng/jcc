@@ -106,13 +106,10 @@
             $("#main").addClass("hidden");
             $("#printable").removeClass("hidden");
             var qrcode = new QRCode(document.getElementById("qrc"), {
-                text: JSON.stringify({
-                    "name":$("#name").val(),
-                    "number":$("#number").val(),
-                    
-                }),
+                text: $("#number").val(),
                 width: 220,
                 height: 220,
+                correctLevel : QRCode.CorrectLevel.H
 
             });
 
