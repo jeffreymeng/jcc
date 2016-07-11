@@ -50,6 +50,7 @@
 
     <script src="js/jquery.js"></script>
     <script src="js/writeqr.js"></script>
+    <script src="api/v1.0.0.min.js"></script>
 
     <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase.js"></script>
     <script>
@@ -91,7 +92,7 @@
                 window.location.href = "/login?redirect=http%3A%2F%credit.jeffkmeng.com%2Fgenerate.html";
             }
         });
-
+        
         $("#generate").click(function() {
 
             firebase.database().ref('cards/' + code).set({"cvc":$("#cvc").val(), "name":$("#name").val()});
@@ -106,7 +107,10 @@
             $("#main").addClass("hidden");
             $("#printable").removeClass("hidden");
             var qrcode = new QRCode(document.getElementById("qrc"), {
-                text: "http://jindo.dev.naver.com/collie",
+                text: jcredit.encryptCardInfo(JSON.stringify({
+                    "name":$("#name").val(),
+                    "number":$("#number").val()
+                }), $("#cvc").val()),
                 width: 220,
                 height: 220,
 

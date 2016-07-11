@@ -1,0 +1,27 @@
+  <h1>Get Credit Card Info</h1>
+  <script src="/js/jquery.js"></script>
+    <script src="/api/v1.0.0.min.js"></script>
+
+<p>Scanning a code may take a while. Please try patiently, or <a href="redeem.html">enter the code manually</a><br>Try to hold the paper on the corners, stretch the paper so it is not bent, and hole it as still as possible. You will be automatically redirected when the code is detected.</p>
+
+ <script src="/js/readqr.min.js"></script>
+ 
+ <div id="reader" style="width:300px;height:250px">
+ </div>
+ <p id="card"></p>
+
+ <script>
+  $('#reader').html5_qrcode(function(data){
+         // do something when code is read
+         var cvc = prompt("Please enter the cvc number");
+         console.log(data);
+         jcredit.decryptCardInfo(data, cvc);
+         $("#card").html(data + "<br>" + cvc);
+    },
+    function(error){
+        //show read errors 
+    }, function(videoError){
+        //the video stream could be opened
+    }
+);
+  </script>
