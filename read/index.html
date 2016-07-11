@@ -7,14 +7,14 @@
  
  <div id="reader" style="width:300px;height:250px">
  </div>
- <p id="card"></p>
+ <p id="data"></p>
 
  <script>
   $('#reader').html5_qrcode(function(data){
          // do something when code is read
          console.log(data)
 console.log(JSON.prase(data));
-         $("#card").html(data + "<br>" + "CVC not included for security.");
+         $("#data").html(data);
     },
     function(error){
         //show read errors 
