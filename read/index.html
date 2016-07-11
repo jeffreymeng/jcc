@@ -12,6 +12,7 @@
  <script>
   $('#reader').html5_qrcode(function(data){
          // do something when code is read
+         console.log(data)
 console.log(JSON.prase(data));
          $("#card").html(data + "<br>" + "CVC not included for security.");
     },
