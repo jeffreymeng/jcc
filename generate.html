@@ -106,7 +106,7 @@
             $("#main").addClass("hidden");
             $("#printable").removeClass("hidden");
             var qrcode = new QRCode(document.getElementById("qrc"), {
-                text: $("#number").val(),
+                text: btoa($("#number").val()),
                 width: 220,
                 height: 220,
                 correctLevel : QRCode.CorrectLevel.H
