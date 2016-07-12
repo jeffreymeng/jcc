@@ -1,8 +1,8 @@
-  <h1>Get Credit Card Info</h1>
+  <h1>Scan Credit Card Info</h1>
   <script src="/js/jquery.js"></script>
 
 <p>Scanning a code may take a while. Please try patiently, or <a href="redeem.html">enter the code manually</a><br>Try to hold the paper on the corners, stretch the paper so it is not bent, and hole it as still as possible. You will be automatically redirected when the code is detected.</p>
-
+<p><a href id="back">Not working? Go Back</a></p>
  <script src="/js/readqr.min.js"></script>
  
  <div id="reader" style="width:300px;height:250px">
@@ -10,6 +10,7 @@
  <p id="data"></p>
 
  <script>
+ $("#back").attr("href", getQuery("redirect"))
   $('#reader').html5_qrcode(function(data){
          // do something when code is read
          console.log(atob(data));
