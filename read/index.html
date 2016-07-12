@@ -12,8 +12,18 @@
  <script>
   $('#reader').html5_qrcode(function(data){
          // do something when code is read
-         console.log(data)
-         $("#data").html(data);
+         console.log(atob(data));
+         function getQuery(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+        window.location.href = getQuery("redirect") + "?code=" + atob(data);
+         
     },
     function(error){
         //show read errors 
